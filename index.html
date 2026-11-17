@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0d12">
+  <title>VIBRA — Your music, your mood</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand"><div class="logo">♫ VIBRA</div><div class="eyebrow">MUSIC FOR YOUR MOMENTS</div></div>
+    <div class="nav-label">MENU</div>
+    <button class="nav active" data-view="home">⌂ <span>Home</span></button>
+    <button class="nav" data-view="all">♫ <span>All Songs</span></button>
+    <button class="nav" data-view="liked">♥ <span>Liked Songs</span></button>
+    <label class="nav upload">＋ <span>Add music</span><input id="fileInput" type="file" accept="audio/*" multiple hidden></label>
+    <div class="playlist-heading"><span class="nav-label">YOUR PLAYLISTS</span><button id="createPlaylist" title="Create playlist">＋</button></div>
+    <div id="playlistList" class="playlist-list"></div>
+    <div class="profile"><b>● YOUR PERSONAL SPACE</b><span>Local music library</span></div>
+  </aside>
+
+  <main class="main">
+    <header class="toolbar">
+      <div class="history"><button aria-label="Back">‹</button><button aria-label="Forward">›</button></div>
+      <div class="search-wrap"><span>⌕</span><input id="search" type="search" placeholder="Search songs, artists, albums..."></div>
+      <div class="user"><span class="avatar">V</span><b>Music Lover</b></div>
+    </header>
+    <section id="hero" class="hero">
+      <div><div class="hero-kicker">YOUR SOUND. YOUR SPACE.</div><h1>Feel every<br>beat with <em>VIBRA.</em></h1>
+      <p>Your personal music space. Bring your favorite tracks<br>together and make every moment sound better.</p>
+      <button id="heroAdd" class="primary">＋ Add your music</button></div>
+      <div class="hero-art"><div class="vinyl">♫</div><span>♪</span></div>
+    </section>
+    <div class="section-head"><div><h2 id="sectionTitle">Your Library</h2><p id="sectionSubtitle">Your collection, all in one place</p></div><button id="addPlaylistTrack" class="secondary">＋ Add to playlist</button></div>
+    <div class="table-wrap">
+      <table><thead><tr><th>#</th><th>TITLE</th><th>ARTIST</th><th>ALBUM / FILE</th><th>TIME</th><th>♥</th></tr></thead><tbody id="songRows"></tbody></table>
+      <div id="empty" class="empty"><div class="empty-icon">♫</div><h3>Your music starts here</h3><p>Add MP3, WAV or other audio files from your device.</p><button id="emptyAdd" class="primary">Choose music</button></div>
+    </div>
+  </main>
+
+  <aside class="now">
+    <div class="now-head"><span>NOW PLAYING</span><span class="dots">•••</span></div>
+    <div class="cover"><div class="cover-disc">♫</div></div>
+    <div class="now-meta"><div><h3 id="nowTitle">Nothing playing</h3><p id="nowArtist">Choose a song to begin</p></div><button id="nowLike" class="heart">♡</button></div>
+    <div class="queue-note">YOUR PERSONAL SOUNDTRACK</div>
+    <div class="up-next"><b>Up next</b><p id="nextTitle">Your next track will appear here</p></div>
+  </aside>
+
+  <footer class="player">
+    <div class="track-mini"><div class="mini-art">♫</div><div><b id="barTitle">Nothing playing</b><span id="barArtist">VIBRA Music Player</span></div></div>
+    <div class="controls"><div class="control-buttons"><button id="shuffle" title="Shuffle">⤨</button><button id="previous" title="Previous">◀|</button><button id="play" class="play">▶</button><button id="next" title="Next">|▶</button><button id="repeat" title="Repeat">↻</button></div>
+      <div class="progress"><span id="elapsed">0:00</span><input id="seek" type="range" min="0" max="100" value="0"><span id="duration">0:00</span></div></div>
+    <div class="volume">🔊 <input id="volume" type="range" min="0" max="1" step=".01" value=".72"></div>
+  </footer>
+</div>
+<audio id="audio"></audio>
+<div id="toast" class="toast"></div>
+<div id="playlistModal" class="modal-backdrop" hidden>
+  <div class="modal">
+    <button id="closePlaylistModal" class="modal-close" aria-label="Close">×</button>
+    <div class="modal-kicker">VIBRA LIBRARY</div>
+    <h2>Add to playlist</h2>
+    <p id="modalSongName">Choose where this song belongs.</p>
+    <div id="playlistChoices" class="playlist-choices"></div>
+    <button id="modalCreatePlaylist" class="modal-create">＋ Create new playlist</button>
+  </div>
+</div>
+<script src="app.js"></script>
+</body></html>
